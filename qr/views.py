@@ -122,6 +122,12 @@ def delete_qr_code(request, qr_code_id):
 
 
 def redirect_to_original(request, redirecting_link):
+    # Look up the Redirect object with the given redirecting_link
     redirect_object = get_object_or_404(QRCode, redirect_link=redirecting_link)
 
-    return redirect(redirect_object.original_link)
+    original_link = redirect_object.original_link
+
+    if not original_link.startswith("http://") and not original_link.startswith("https://"):
+        original_link = "http://" + original_link
+
+    return redirect(original_link)
