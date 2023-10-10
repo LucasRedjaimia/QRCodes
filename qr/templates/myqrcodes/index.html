@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+    h1 {
+        width: 100%;
+        text-align: center;
+    }
+    .container {
+        width: 75%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .qrcode {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 15%;
+    }
+    .more {
+        background-color: black;
+        border-radius: 10px;
+        color: white;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        text-decoration: none;
+        padding: 0 15px;
+        transition: all .3s;
+        width: 300px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .more:hover {
+        transform: scale(1.1);
+        color: white;
+    }
+    </style>
+    <h1>My QR Codes</h1>
+
+    {% if qr_codes %}
+        <div class="container">
+            {% for qr_code in qr_codes %}
+                <div class="qrcode">
+                    <img src="{{ qr_code.image.url }}" alt="{{ qr_code.original_link }}" width="200" height="200">
+                    <p>{{ qr_code.original_link }}</p>
+                    <form method="post" action="{% url 'delete_qr_code' qr_code.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No QR codes found for your profile.</p>
+    {% endif %}
+
+    <br>
+    <a href="/" class="more">Generate Another QR Code</a>
+{% endblock %}

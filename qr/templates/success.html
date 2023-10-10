@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+        * {
+            color: white;
+            font-family: Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #262626;
+        }
+        header {
+            background-color: #646464;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+        .img {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        img {
+            border-radius: 15px;
+            width: 200px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .buttons a {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px 10px;
+            width: 250px;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin: 30px;
+        }
+        .list_img {
+            width: 80%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        }
+        .imgdiv {
+            width: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <header>
+        <h1>QR Code Generated Successfully</h1>
+        <p>The QR code for {{ qr_code.original_link }} has been generated and saved.</p>
+    </header>
+    <div class="img">
+        <img src="{{ qr_code.image.url }}" alt="QR Code">
+    </div>
+    <div class="buttons">
+        <a href="{{ qr_code.image.url }}" download="{{ qr_code.original_link }}.png">Download QR Code</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .img_container {
+            width: 150px;
+            height: 150px;
+            border-radius: 150px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img_container img {
+            width: 150%;
+        }
+
+        textarea {
+            height: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .content {
+            width: 75%;
+            margin: 0 auto;
+            margin-top: 20%;
+            display: flex;
+            justify-content: space-evenly;
+            border-radius: 25px;
+            padding: 50px 0;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        .edit-profile {
+            background-color: black;
+            border-radius: 10px;
+            color: white;
+            height: 40px;
+            line-height: 40px;
+            text-decoration: none;
+            padding: 0 15px;
+            transition: all .3s;
+        }
+        .edit-profile:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+    <h1>{{ user_profile.user.username }}'s Profile</h1>
+    <div class="content">
+        <div class="img_container">
+            <img src="/media/{{ user_profile.profile_pic }}" alt="User's profile picture" class="profile_pic">
+        </div>
+        <p>Bio: {{ user_profile.bio }}</p>
+        <img src="{{ user_profile.profile_pic }}" alt="">
+
+        <a href="{% url 'profile_edit' user_profile.pk %}" class="edit-profile">Edit Profile</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .img_container {
+            width: 150px;
+            height: 150px;
+            border-radius: 150px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img_container img {
+            width: 150%;
+        }
+        textarea {
+        height: 30px;
+        border-radius: 15px;
+    }
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+        .content {
+            width: 75%;
+            margin: 0 auto;
+            margin-top: 20%;
+            display: flex;
+            justify-content: space-evenly;
+            border-radius: 25px;
+            padding: 50px 0;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        .save-profile {
+            background-color: black;
+            border-radius: 10px;
+            color: white;
+            height: 40px;
+            line-height: 40px;
+            text-decoration: none;
+            padding: 0 15px;
+            transition: all .3s;
+        }
+        .save-profile:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+<h1>Edit Profile</h1>
+    <div class="content">
+        <div class="img_container">
+            <img src="/media/{{ profile.profile_pic }}" alt="User's profile picture" class="profile_pic">
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save-profile">Save Changes</button>
+        </form>
+    </div>
+
+{% endblock %}
