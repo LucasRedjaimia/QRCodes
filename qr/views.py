@@ -55,7 +55,7 @@ def generate_unique_redirect(original_link):
 
     slug = slugify(unique_text_hash)[:10]
 
-    redirect_link = f"127.0.0.1:8000/redirection/{slug}"
+    redirect_link = f"https://qrcodeslibapp-7078f907bd77.herokuapp.com/redirection/{slug}"
 
     return redirect_link
 
