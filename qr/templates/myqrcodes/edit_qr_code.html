@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- edit_qr_code.html -->
+<h2>Edit QR Code</h2>
+<form method="post" action="{% url 'edit_qr_code' qr_code.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="edit">
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+    <a href="{% url 'my_qr_codes' %}" class="cancel-edit">Cancel</a>
+</form>
+{% endblock %}
