@@ -13,5 +13,5 @@ urlpatterns = [
     path('myqrcodes/', views.my_qr_codes, name='my_qr_codes'),
     path('delete_qr_code/<int:qr_code_id>/', views.delete_qr_code, name='delete_qr_code'),
     path('redirection/<str:redirecting_link>/', views.redirect_to_original, name='redirect_to_original'),
-
+    path('edit_qr_code/<int:qr_code_id>/', views.edit_qr_code, name='edit_qr_code'),
 ]

@@ -2,12 +2,13 @@ import hashlib
 from datetime import timezone
 import random
 
+from django.contrib import messages
 from django.core.files import File
 import qrcode
 from io import BytesIO
 
 from django.utils.text import slugify
-from .models import QRCode
+from .models import QRCode, QRCodeEditForm
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -105,6 +106,9 @@ class ProfileUpdateView(UpdateView):
 def my_qr_codes(request):
     user_profile, created = Profile.objects.get_or_create(user=request.user)
     qr_codes = QRCode.objects.filter(profile=user_profile)
+
+    messages.get_messages(request)
+
     return render(request, 'myqrcodes/index.html', {'qr_codes': qr_codes})
 
 
@@ -116,9 +120,24 @@ def delete_qr_code(request, qr_code_id):
     if qr_code.profile.user != request.user:
         return redirect('my_qr_codes')
 
-    qr_code.delete()
-
+    if request.method == 'POST':
+        qr_code.delete()
     return redirect('my_qr_codes')
+
+
+def edit_qr_code(request, qr_code_id):
+    qr_code = get_object_or_404(QRCode, id=qr_code_id)
+
+    if request.method == 'POST':
+        form = QRCodeEditForm(request.POST, instance=qr_code)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'QR code updated successfully')
+            return redirect('my_qr_codes')
+    else:
+        form = QRCodeEditForm(instance=qr_code)
+
+    return render(request, 'myqrcodes/edit_qr_code.html', {'form': form, 'qr_code': qr_code})
 
 
 def redirect_to_original(request, redirecting_link):
