@@ -1,3 +1,1 @@
-web: gunicorn LiberQRCode.wsgi:application --log-file - --log-level debug
-python manage.py collectstatic --noinput
-manage.py migrate
+web: gunicorn LiberQRCode.wsgi --log-file -
