@@ -1,1 +1,1 @@
-web: gunicorn QRCodes.wsgi
+web: gunicorn LiberQRCode.wsgi
