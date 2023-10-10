@@ -67,7 +67,7 @@ def generate_qr_code(request):
         redirect_link = create_redirection(original_link)
 
         sanitized_text = slugify(original_link)
-        qr_image = qrcode.make(redirect_link, box_size=15)
+        qr_image = qrcode.make("https://qrcodeslibapp-7078f907bd77.herokuapp.com/redirection/" + redirect_link, box_size=15)
         qr_image_pil = qr_image.get_image()
 
         stream = BytesIO()
