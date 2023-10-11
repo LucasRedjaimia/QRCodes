@@ -42,13 +42,20 @@
         .save-btn:hover {
             background-color: forestgreen;
         }
-
+        .blackbar {
+            position: fixed;
+            top: 0;
+            height: 50px;
+            width: 100%;
+            background-color: #2c2c2c;
+        }
         @media only screen and (max-width: 600px) {
             .formulaire {
                 width: 95%;
             }
         }
     </style>
+    <div class="blackbar"></div>
     <h2>Edit QR Code</h2>
     <div class="formulaire">
         <form method="post" action="{% url 'edit_qr_code' qr_code.id %}">
