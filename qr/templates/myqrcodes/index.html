@@ -36,6 +36,27 @@
         transform: scale(1.1);
         color: white;
     }
+    .btn {
+        color: white;
+        text-decoration: none;
+        padding: 5px 20px;
+        border-radius: 10px;
+        background-color: black;
+        transition: all .2s;
+        margin: 5px;
+    }
+    .btn:hover {
+        transform: scale(1.1);
+        color: white;
+        font-weight: bold;
+    }
+    .delete-button:hover {
+        background-color: #ce0000;
+    }
+    .btns {
+        display: flex;
+        justify-content: space-between;
+
     </style>
     <h1>My QR Codes</h1>
 
@@ -53,11 +74,13 @@
                 <div class="qrcode">
                     <img src="{{ qr_code.image.url }}" alt="{{ qr_code.original_link }}" width="200" height="200">
                     <p>{{ qr_code.original_link }}</p>
-                    <a href="{% url 'edit_qr_code' qr_code.id %}" class="edit-button">Edit</a>
-                    <form method="post" action="{% url 'delete_qr_code' qr_code.id %}">
-                        {% csrf_token %}
-                        <button type="submit" name="action" value="delete" class="delete-button">Delete</button>
-                    </form>
+                    <div class="btns">
+                        <a href="{% url 'edit_qr_code' qr_code.id %}" class="edit-button btn">Edit</a>
+                        <form method="post" action="{% url 'delete_qr_code' qr_code.id %}">
+                            {% csrf_token %}
+                            <button type="submit" name="action" value="delete" class="delete-button btn">Delete</button>
+                        </form>
+                    </div>
                 </div>
             {% endfor %}
         </div>
