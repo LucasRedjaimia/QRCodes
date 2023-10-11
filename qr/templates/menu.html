@@ -18,16 +18,64 @@
     .fixed-top {
         position: absolute!important;
     }
-
+    #switch {
+        display: none;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 9999;
+    }
+    .logout {
+        position: absolute;
+        right: 10px;
+    }
+    #navbarNav {
+      background-color: #2c2c2c!important;
+    }
     @media only screen and (max-width: 600px) {
         body {
-            background-color: lightblue;
+            padding-top: 0;
+        }
+        #switch {
+            display: block;
+        }
+        #switch i {
+            font-size: 24px;
+            color: white;
+        }
+        #navbarNav {
+            height: 100vh;
+            position: absolute;
+            display: none;
+            padding: 0;
+        }
+        .navbar {
+            height: 100vh;
+        }
+        .navbar ul {
+            height: 100vh;
+            padding-top: 50%;
+        }
+        .navbar ul li {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .right {
+            position: unset;
+            margin: 0 auto;
+        }
+        .logout {
+            position: unset;
         }
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" style="width: 100%">
-    <div class="toggleButton" id="switch" style="width: 10px; height: 10px; background-color: red;"></div>
-    <div class="navbar" id="navbarNav" style="width: 100%">
+<div class="toggleButton" id="switch">
+    <i class="fa-solid fa-bars"></i>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" id="navbarNav" style="width: 100%">
+    <div class="navbar" style="width: 100%">
         <ul class="navbar-nav" style="width: 100%">
              <li class="nav-item active">
                 <a class="nav-link" href="{% url 'index' %}">Accueil<i class="fa-solid fa-house"></i></a>
@@ -39,7 +87,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'my_qr_codes' %}">My QR codes<i class="fa-solid fa-qrcode"></i></a>
                 </li>
-                <li class="nav-item" style="position: absolute; right: 10px;">
+                <li class="nav-item logout">
                     <a class="nav-link" href="{% url 'logout' %}">Logout<i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </li>
             {% else %}
