@@ -39,7 +39,7 @@
 <header class="py-2">
     <h1 class="header">QR Code Generator</h1>
   </header>
-  <div class="container shadow" style="width: 800px; margin-top: 5em; padding: 3em">
+  <div class="container shadow" style="margin-top: 5em; padding: 3em">
     <form method="post" action="{% url 'generate_qr_code' %}">
       {% csrf_token %}
       <h3><center>Enter text/link to generate a QR code</center></h3>
