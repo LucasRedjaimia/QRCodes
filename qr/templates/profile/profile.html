@@ -55,9 +55,6 @@
         <div class="img_container">
             <img src="/media/{{ user_profile.profile_pic }}" alt="User's profile picture" class="profile_pic">
         </div>
-        <p>Bio: {{ user_profile.bio }}</p>
-        <img src="{{ user_profile.profile_pic }}" alt="">
-
         <a href="{% url 'profile_edit' user_profile.pk %}" class="edit-profile">Edit Profile</a>
     </div>
 

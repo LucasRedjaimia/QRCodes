@@ -97,7 +97,7 @@ def profile_view(request):
 
 class ProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['bio', 'profile_pic']
+    fields = ['profile_pic']
     template_name = 'profile/profile_edit.html'
     success_url = '/profile/'
 

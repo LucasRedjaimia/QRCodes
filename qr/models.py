@@ -5,7 +5,6 @@ from django import forms
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField()
     profile_pic = models.ImageField(upload_to='profile_pic/')
 
     def __str__(self):
