@@ -16,7 +16,7 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        width: 15%;
+        width: 30%;
     }
     .more {
         background-color: black;
@@ -56,7 +56,8 @@
     .btns {
         display: flex;
         justify-content: space-between;
-
+        flex-wrap: wrap;
+    }
     </style>
     <h1>My QR Codes</h1>
 
@@ -72,7 +73,7 @@
         <div class="container">
             {% for qr_code in qr_codes %}
                 <div class="qrcode">
-                    <img src="{{ qr_code.image.url }}" alt="{{ qr_code.original_link }}" width="200" height="200">
+                    <img src="{{ qr_code.image.url }}" alt="{{ qr_code.original_link }}" width="300" height="300">
                     <p>{{ qr_code.original_link }}</p>
                     <div class="btns">
                         <a href="{% url 'edit_qr_code' qr_code.id %}" class="edit-button btn">Edit</a>
@@ -80,6 +81,7 @@
                             {% csrf_token %}
                             <button type="submit" name="action" value="delete" class="delete-button btn">Delete</button>
                         </form>
+                        <a href="{{ qr_code.image.url }}" download="{{ qr_code.original_link }}.png" class="btn"><i class="fa-solid fa-floppy-disk"></i></a>
                     </div>
                 </div>
             {% endfor %}
