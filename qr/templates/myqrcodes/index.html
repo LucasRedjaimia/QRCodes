@@ -57,6 +57,9 @@
     .delete-button:hover {
         background-color: #ce0000;
     }
+    .save-button:hover {
+        background-color: #009a08;
+    }
     .btns {
         display: flex;
         justify-content: space-between;
@@ -89,7 +92,7 @@
                             {% csrf_token %}
                             <button type="submit" name="action" value="delete" class="delete-button btn"><i class="fa-solid fa-trash"></i></button>
                         </form>
-                        <a href="{{ qr_code.image.url }}" download="{{ qr_code.original_link }}.png" class="btn"><i class="fa-solid fa-floppy-disk"></i></a>
+                        <a href="{{ qr_code.image.url }}" download="{{ qr_code.original_link }}.png" class="btn save-button"><i class="fa-solid fa-floppy-disk"></i></a>
                     </div>
                 </div>
             {% endfor %}
