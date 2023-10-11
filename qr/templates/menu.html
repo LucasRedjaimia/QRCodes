@@ -18,8 +18,15 @@
     .fixed-top {
         position: absolute!important;
     }
+
+    @media only screen and (max-width: 600px) {
+        body {
+            background-color: lightblue;
+        }
+    }
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top" style="width: 100%">
+    <div class="toggleButton" id="switch" style="width: 10px; height: 10px; background-color: red;"></div>
     <div class="navbar" id="navbarNav" style="width: 100%">
         <ul class="navbar-nav" style="width: 100%">
              <li class="nav-item active">
@@ -49,3 +56,10 @@
         </ul>
     </div>
 </nav>
+<script>
+    $(document).ready(function() {
+        $("#switch").click(function() {
+            $("#navbarNav").toggle();
+        });
+    });
+</script>
