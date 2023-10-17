@@ -3,14 +3,37 @@
   {% block navbar %}
     {% include 'menu.html' %}
 {% endblock %}
+<style>
+    .container {
+        margin-top: 150px;
+        border: 1px solid #b4b4b4;
+        border-radius: 20px;
+        width: 40% !important;
+    }
+
+    .input-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    h1 {
+        text-align: center;
+        width: 100%;
+    }
+    .btn {
+        background-color: #EAD7BB;
+        color: #113946;
+        transition: all .2s;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+    }
+</style>
   <div class="container" style="padding-top: 50px">
+        <h1>Register</h1>
     <div class="row">
-      <div class="col-md-12 col-centered">
-        <h1 class="mt-5 mb-3">Register</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt-3">
+      <div class="input-container">
         <form method="post" action="{% url 'register' %}">
           {% csrf_token %}{% for field in form %}
           <div class="form-group">
@@ -29,7 +52,7 @@
             {{ error|escape }}
           </p>
           {% endfor %} {% endif %} {% endfor %}
-          <button type="submit" class="btn btn-primary mt-2">Register</button>
+          <button type="submit" class="btn mt-2">Register</button>
         </form>
       </div>
     </div>

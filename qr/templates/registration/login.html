@@ -1,50 +1,97 @@
 {% extends 'registration/base.html' %}
 
 {% block content %}
-{% block navbar %}
-    {% include 'menu.html' %}
-{% endblock %}
-<section>
-  <div class="container" style="padding-top: 50px">
-    <div class="row">
-      <div class="col-md-12 col-centered">
-        <h1 class="mt-5 mb-3">Login</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3 mt-3">
-        <form method="post" action="{% url 'login' %}">
-          {% csrf_token %}
-          <div class="form-group">
-            {{ form.username.label_tag }}
-            <input
-              type="text"
-              name="username"
-              class="form-control"
-              maxlength="150"
-              id="id_username"
-              required
-            />
-          </div>
-          <div class="form-group">
-            {{ form.password.label_tag }}
-            <input
-              type="password"
-              name="password"
-              class="form-control"
-              id="id_password"
-              required
-            />
-          </div>
-          {% if form.non_field_errors %} {% for error in form.non_field_errors %}
-          <p style="font-size: 13px;">
-            {{ error|escape }}
-          </p>
-          {% endfor %} {% endif %}
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+    {% block navbar %}
+        {% include 'menu.html' %}
+    {% endblock %}
+    <style>
+        .container {
+            margin-top: 150px;
+            border: 1px solid #b4b4b4;
+            border-radius: 20px;
+            width: 40% !important;
+        }
+
+        .input-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            width: 100%;
+        }
+        .btn {
+            background-color: #EAD7BB;
+            color: #113946;
+            transition: all .2s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .sbmt-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .mdp {
+            color: #838383;
+        }
+    </style>
+    <section>
+        <div class="container" style="padding-top: 50px">
+            <h1>Login</h1>
+            <div class="row">
+                <div class="input-container">
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.username.label_tag }}
+                            <input
+                                    type="text"
+                                    name="username"
+                                    class="form-control"
+                                    maxlength="150"
+                                    id="id_username"
+                                    required
+                            />
+                        </div>
+                        <div class="form-group">
+                            {{ form.password.label_tag }}
+                            <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    id="id_password"
+                                    required
+                            />
+                        </div>
+                        <p style="font-size: 13px; margin-top: 10px;">
+                            <a href="{% url 'password_reset' %}" class="mdp">Mot de passe oublié ?</a>
+                        </p>
+                        {% if form.non_field_errors %} {% for error in form.non_field_errors %}
+                            <p style="font-size: 13px;">
+                                {{ error|escape }}
+                            </p>
+                        {% endfor %}
+                        {% endif %}
+                        <div class="buttons">
+                            <div class="sbmt-container">
+                                <button type="submit" class="btn" style="margin-bottom: 20px">Se connecter</button>
+                            </div>
+                            <a title="Google" class="socialaccount_provider google btn"
+                               href="/accounts/google/login/?process=login"><i class="fa-brands fa-google"></i> Se
+                                connecter avec Google</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -4,7 +4,11 @@
     body {
       background-color: #ffffff;
     }
-
+    h2 {
+        color: #113946;
+        text-transform: uppercase;
+        margin-top: 30px;
+    }
     .container {
       background-color: #ffffff;
       color: #000000;
@@ -35,17 +39,25 @@
     .py-2 {
       background-color: #2c2c2c;
     }
+    .logo {
+        width: 20%;
+        margin: 0 auto;
+    }
+    .form-control {
+        max-width: 60%;
+        margin: 0 auto;
+        border-radius: 50px;
+    }
   </style>
-<header class="py-2">
-    <h1 class="header">QR Code Generator</h1>
+<header class="header">
+    <img src="/media/logo-header.png" alt="QRMotion logo" class="logo">
+    <h2>Générateur de QRCodes dynamiques</h2>
   </header>
-  <div class="container shadow" style="margin-top: 5em; padding: 3em">
     <form method="post" action="{% url 'generate_qr_code' %}">
       {% csrf_token %}
-      <h3><center>Enter text/link to generate a QR code</center></h3>
+      <h3><center>copiez votre lien pour générer un QRCode</center></h3>
       </br>
       <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">Text/Link:</span>
         <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" name="original_link" autofocus>
 
 
@@ -54,5 +66,4 @@
         <input type="submit" style="max-width: 200px; margin: auto" class="form-control">
       </div>
     </form>
-  </div>
 {% endblock %}

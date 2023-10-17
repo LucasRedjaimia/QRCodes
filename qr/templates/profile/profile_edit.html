@@ -48,9 +48,6 @@
     </style>
 <h1>Edit Profile</h1>
     <div class="content">
-        <div class="img_container">
-            <img src="{{ profile.profile_pic.url }}" alt="User's profile picture" class="profile_pic">
-        </div>
         <form method="post" action="{% url 'profile_edit' profile.id %}">
             {% csrf_token %}
             {{ form.as_p }}

@@ -8,7 +8,7 @@ import qrcode
 from io import BytesIO
 
 from django.utils.text import slugify
-from .models import QRCode, QRCodeEditForm
+from .models import QRCode, QRCodeEditForm, CustomUserCreationForm
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -17,6 +17,8 @@ from django.shortcuts import render
 from django.views.generic import UpdateView
 from .models import Profile
 from django.utils import timezone
+from django.shortcuts import redirect
+from social_django.utils import psa
 
 
 def index(request):
@@ -26,7 +28,7 @@ def index(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -35,7 +37,7 @@ def register(request):
             login(request, user)
             return redirect('/')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
@@ -97,7 +99,7 @@ def profile_view(request):
 
 class ProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['profile_pic']
+    fields = ['bio']
     template_name = 'profile/profile_edit.html'
     success_url = '/profile/'
 

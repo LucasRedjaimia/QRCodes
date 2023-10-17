@@ -23,6 +23,7 @@
         h1 {
             width: 100%;
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .content {
@@ -31,6 +32,7 @@
             margin-top: 10%;
             display: flex;
             justify-content: space-evenly;
+            flex-wrap: wrap;
             border-radius: 25px;
             padding: 50px 0;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -50,11 +52,8 @@
             color: white;
         }
     </style>
-    <h1>{{ user_profile.user.username }}'s Profile</h1>
     <div class="content">
-        <div class="img_container">
-            <img src="/media/{{ user_profile.profile_pic }}" alt="User's profile picture" class="profile_pic">
-        </div>
+        <h1>profil de {{ user_profile.user.username }}</h1>
         <a href="{% url 'profile_edit' user_profile.pk %}" class="edit-profile">Edit Profile</a>
     </div>
 
