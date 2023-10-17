@@ -143,14 +143,14 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '130004692136-ts5qa9h442jl4cpt5nht2e63bg3n4ja6.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'j.mimoun.devlib@gmail.com'
-EMAIL_HOST_PASSWORD = 'terp mrzp mikw yisi'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
